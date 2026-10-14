@@ -1,10 +1,14 @@
 /* 기본 페이지 서식 */
 body {
   margin: 0;
-  padding: 0 120px; /* 페이지 기본 여백 */
+  padding: 0 0; /* 페이지 기본 여백,가로여백 120px */
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #ffffff;
   color: #1E1919; /* 기본 색상 */
+}
+
+.main-wrapper {
+  padding: 0 120px;
 }
 
 /* 주요 색상 정의 */
@@ -14,13 +18,14 @@ body {
   --text-color: #1E1919;
   --footer-bg: #FDF5F6;
   --footer-text: #7C7372;
+  --border-color: #ddd;
 }
 
 
 /* 헤더 */
 header {
   padding: 0 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
   box-shadow: 0 2px 4px -3px rgba(0,0,0,0.2);
 }
 .header-inner {
@@ -36,22 +41,35 @@ header img.logo {
     height: 45px;
 }
 
-.header-search input {
+.header-search {
+  position: relative;
   width: 200px;
   height: 45px;
-  padding: 5px 10px;
+}
+.header-search input {
+  padding: 5px 34px;
   border: 0px solid var(--text-color);
   color: var(--text-color);
   background-color: var(--secondary-color);
   border-radius: 5px;
 }
+.header-search .search-button {
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}
 
 /* 푸터 */
 footer {
+  padding: 20px 0;
   background-color: var(--footer-bg);
   color: var(--footer-text);
   text-align: center;
-  padding: 20px;
   margin-top: 40px;
 }
 
@@ -95,9 +113,8 @@ p {
 
 /* 박스 요소 */
 .box {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  background-color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 20px;
   margin: 20px 0;
@@ -119,19 +136,20 @@ product-list {
 }
 
 .product-item {
-  width: 200px;               /* 세트 단위 크기 */
+  width: 297px;
   display: flex;
   flex-direction: column;     /* 위: 이미지, 아래: 텍스트 */
 }
 
 .image-box img {
-  height: 250px;
-  object-fit: cover;          /* 이미지 잘라내기 */
+  width: 297px;   /* 1대 루트2 비율 유지 */
+  height: 420px;
+  object-fit: cover;
   display: block;
 }
 
 .text-box {
-  padding: 10px;
+  padding: 5px;
 }
 .text-box .category {
   font-size: 0.9em;
