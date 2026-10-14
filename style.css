@@ -1,0 +1,152 @@
+/* 기본 페이지 서식 */
+body {
+  margin: 0;
+  padding: 0 120px; /* 페이지 기본 여백 */
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #ffffff;
+  color: #1E1919; /* 기본 색상 */
+}
+
+/* 주요 색상 정의 */
+:root {
+  --primary-color: #C92C47;
+  --secondary-color: #FDF5F6;
+  --text-color: #1E1919;
+  --footer-bg: #FDF5F6;
+  --footer-text: #7C7372;
+}
+
+
+/* 헤더 */
+header {
+  padding: 0 0;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px -3px rgba(0,0,0,0.2);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 100px;
+}
+
+header img.logo {
+    background: url("res/logo_1.png") no-repeat center;
+    background-size: contain;
+    height: 45px;
+}
+
+.header-search input {
+  width: 200px;
+  height: 45px;
+  padding: 5px 10px;
+  border: 0px solid var(--text-color);
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+/* 푸터 */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+footer img.logo {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+/* 아이콘 버튼 */
+.icon-btn {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* 텍스트 구간 */
+h1, h2, h3 {
+  color: var(--primary-color);
+  letter-spacing: -0.5px;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* 박스 요소 */
+.box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 20px 0;
+  opacity: 0.95;
+}
+
+
+
+
+
+
+/* 여기부터는 product_list에서 쓰는 CSS */
+product-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-item {
+  width: 200px;               /* 세트 단위 크기 */
+  display: flex;
+  flex-direction: column;     /* 위: 이미지, 아래: 텍스트 */
+}
+
+.image-box img {
+  height: 250px;
+  object-fit: cover;          /* 이미지 잘라내기 */
+  display: block;
+}
+
+.text-box {
+  padding: 10px;
+}
+.text-box .category {
+  font-size: 0.9em;
+  color: var(--secondary-color);
+}
+.text-box .title {
+  margin: 5px 0;
+  font-size: 1.1em;
+  color: var(--primary-color);
+}
+.text-box .price {
+  font-weight: bold;
+  color: #333;
+}
+.text-box .rating {
+  font-size: 0.9em;
+  color: #666;
+}
