@@ -1,15 +1,8 @@
-/* 기본 페이지 서식 */
-body {
-  margin: 0;
-  padding: 0 0; /* 페이지 기본 여백 */
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #ffffff;
-  color: #1E1919; /* 기본 색상 */
-}
+/* ===================================================== */
+/* 공용 서식 */
+/* ===================================================== */
 
-.main-wrapper {
-  padding: 0 240px; /* 페이지 가로 여백 */
-}
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
 /* 주요 색상 정의 */
 :root {
@@ -23,18 +16,98 @@ body {
   --background-color: #ffffff; /* 배경색 */
 }
 
+/* 폰트 */
+@font-face {
+    font-family: 'Pretendard1';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
 
-/* 헤더 */
-header {
+@font-face {
+    font-family: 'Pretendard2';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard3';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard4';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard5';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard6';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard7';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard8';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard9';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+
+body { /* 기본 페이지 서식 */
+  margin: 0;
+  padding: 0 0; /* 페이지 기본 여백 */
+  font-family: 'Pretendard5';
+  background-color: #ffffff;
+  color: #1E1919; /* 기본 색상 */
+}
+
+.main-wrapper {
+  padding: 0 240px; /* 페이지 가로 여백 */
+}
+
+
+/* 헤더 & 푸터 (공용) */
+/* ----------------------------------------------------- */
+
+header { /* 헤더 */
   padding: 0 0;
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 2px 4px -3px rgba(0,0,0,0.2);
+  margin-bottom: 40px;
 }
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 240px; /* 채영님 시안처럼 좀 가운데에 모을 거라면 가로패딩 240px */
+  padding: 15px 240px; /* 채영님 시안처럼 좀 가운데에 모을 거라면 가로패딩 추가 */
 }
 
 header img.logo {
@@ -49,7 +122,7 @@ header img.logo {
   height: 45px;
 }
 .header-search input {
-  padding: 5px 34px;
+  padding: 15px 32px;
   border: 0px solid var(--text-color);
   color: var(--text-color);
   background-color: var(--secondary-color);
@@ -64,6 +137,11 @@ header img.logo {
   background: none;
   cursor: pointer;
   font-size: 14px;
+}
+.header-search .search-button svg {
+  width: 15px;
+  height: 15px;
+  fill: var(--primary-color);
 }
 
 /* 푸터 */
@@ -81,9 +159,8 @@ footer img.logo {
 }
 
 
-
-
-
+/* 잡다한거 */
+/* ----------------------------------------------------- */
 
 nav a {
   margin: 0 15px;
@@ -95,14 +172,13 @@ nav a:hover {
   text-decoration: underline;
 }
 
-
-/* 아이콘 버튼 */
-.icon-btn {
+.icon-btn { /* 아이콘 버튼 */
   margin-left: 10px;
   cursor: pointer;
 }
 
-/* 텍스트 구간 */
+/* 텍스트 서식 */
+/* ----------------------------------------------------- */
 h1 {
   color: var(--text-color);
   letter-spacing: -0.5px;
@@ -121,16 +197,30 @@ p {
 
 
 
+
+/* ===================================================== */
+/* projuct_list CSS */
+/* ===================================================== */
+
+.title-upper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.title-upper .filter-button {
+  position: absolute;
+  top: 50%;
+}
+
 /* 여기부터는 product_list에서 쓰는 CSS */
 .product-list { /* 부모 컨테이너 */
   display: flex;
-  flex-wrap: wrap;          /* 줄바꿈 허용 */
-  gap: 30px;          /* 아이템 간격 */
+  flex-wrap: wrap;
+  gap: 30px;
   justify-content: space-between;
 }
 
-/* 개별 아이템 박스 */
-.product-item {
+.product-item { /* 개별 아이템 박스 */
   flex: 0 0 calc((100% - 3 * 30px) / 4);
   box-sizing: border-box;
   border: 1px solid #ddd;
@@ -140,8 +230,7 @@ p {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* 썸네일 이미지 */
-.product-item .thumbnail {
+.product-item .thumbnail { /* 썸네일 이미지 */
   width: 90%;
   height: auto;
   display: block;
@@ -149,25 +238,27 @@ p {
   object-fit: cover;        /* 이미지 잘라내기 */
 }
 
-/* 정보 영역 */
-.product-item .info {
+
+.product-item .info { /* 각 아이템 설명 */
   padding: 0 15px;
 }
 .product-item .category {
   font-size: 0.9em;
   color: var(--subtext-color);
+  font-family: "Pretendard5";
 }
 .product-item .title {
-  margin: 0 0;
-  font-size: 1.1em;
+  margin: 4px 0;
+  font-size: 1.2em;
   color: var(--text-color);
 }
 .product-item .price {
   margin: 1px 0;
   font-weight: bold;
-  color: #333;
+  color: var(--subtext-color);
 }
 .product-item .rating {
+  margin: 4px 0 20px 0;
   font-size: 0.9em;
   font-weight: bold;
   color: var(--primary-color);

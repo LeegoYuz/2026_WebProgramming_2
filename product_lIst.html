@@ -16,17 +16,19 @@
                 <nav>
                     <ul>
                         홈
-                        연극
-                        뮤지컬
+                        작품
+                        리뷰
                     </ul>
                 </nav>
             </div>
 
             <div class="header-search">
                 <form class="header-right">
-                    <input type="text" placeholder="검색어를 입력하세요">
+                    <input type="search" name="search" placeholder="작품 검색">
                     <button class="search-button">
-                        🔍
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
                     </button>
                 </form>
             </div>
@@ -37,7 +39,12 @@
     
     <body>
     <div class="main-wrapper">
-        <h2>연극</h2>
+        <section class="title-upper">
+            <h2>연극</h2>
+            <div>
+                <button>필터링</button>
+            </div>
+        </section>
         
         <section class="product-list">
             <!-- 각 아이템 항목 -->
@@ -160,7 +167,7 @@
                     <p class="rating">★★★★☆ (4.2)</p>
                 </div>
             </div>
-
+            <p>페이지 넘기는거 넣기?</p>
         </section>
     </div>
     </body>
@@ -169,5 +176,6 @@
         <div class="footer-logo">
             <img src="res/logo_1.png" alt="로고" class="logo">
         </div>
+        <p>푸터텍스트~~</p>
     </footer>
 </html>

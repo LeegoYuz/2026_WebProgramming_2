@@ -1,0 +1,49 @@
+/* ===================================================== */
+/* 아이템 박스 */
+/* ===================================================== */
+/* 전체 css는 아래와 같고 */
+/* 주로 .product-item / .product-item .thumbnail의 모서리 곡률, 포스터 비율, 그림자 서식, 마진 등등 적당히 참고하시면 될 듯해요 */
+
+.product-item { /* 개별 아이템 박스 */
+  flex: 0 0 calc((100% - 3 * 30px) / 4);
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;         /* 이미지 넘침 방지 */
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.product-item .thumbnail { /* 썸네일 이미지 */
+  width: 90%;
+  height: auto;
+  display: block;
+  margin: 15px auto 5px auto;
+  object-fit: cover;        /* 이미지 잘라내기 */
+}
+
+
+.product-item .info { /* 각 아이템 설명 */
+  padding: 0 15px;
+}
+.product-item .category {
+  font-size: 0.9em;
+  color: var(--subtext-color);
+  font-family: "Pretendard5";
+}
+.product-item .title {
+  margin: 4px 0;
+  font-size: 1.2em;
+  color: var(--text-color);
+}
+.product-item .price {
+  margin: 1px 0;
+  font-weight: bold;
+  color: var(--subtext-color);
+}
+.product-item .rating {
+  margin: 4px 0 20px 0;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: var(--primary-color);
+}
