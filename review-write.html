@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <title>리뷰 작성</title>
-    //폰트
-    //페이지 연결
+    <title>리뷰작성 - 베리티켓</title>
+    <meta charset="utf-8">
+    <meta name="author" content="이세나">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
         <section class="page-title">
-            <h2>리뷰 작성</h2>
+            <h2>리뷰 <span>작성</span></h2>
             <p>관람한 공연에 대한 솔직한 후기를 남겨주세요.</p>
         </section>
         <div>
             <label>관람 작품</label>
             <select>
                 <option value="">작품을 선택하세요</option>
-                <option></option>
-                <option></option>
+                <option>뮤지컬 [미드나잇]</option>
+                <option>뮤지컬 [스위니토드]</option>
+                <option>뮤지컬 [오페라의 유령]</option>
+                <option>연극 [프로젝트 르완다]</option>
             </select>
         </div>
-        <div>
-            <label>관람일</label>
+        <div class="form-row">
+            <label for="date">관람일</label>
+            <input type="date" id="date" name="date" required>
         </div>
-        <div></div>
-        <div>
-            <label>리뷰 내용</label>
+        <div class="form-row">
+            <span class="row-label">별점</span>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+            </div>            
         </div>
-        <div>
+        <div class="form-row">
+        <label for="oneline">한줄평</label>
+        <div class="field">
+          <input type="text" id="oneline" name="oneline" maxlength="30"
+                 placeholder="공연을 한 줄로 표현해 주세요" required>            
+        </div>
+        <div class="form-row">
+            <label for="content">리뷰 내용</label>
+        </div>
+        <div class="form-row">
             <label>사진 첨부</label>
         </div>
-        <div></div>
+        <div class="form-buttons">
+            <a href="review.html" class="btn-cancel">취소</a>
+            <button type="submit" class="btn-submit">등록하기</button>           
+        </div>
     </main>
 </body>
+<footer>
+    <div class="footer-logo">
+        <img src="res/logo_1.png" alt="로고" class="logo">
+    </div>
+    <p>푸터텍스트~~</p>
+</footer>
+</html>

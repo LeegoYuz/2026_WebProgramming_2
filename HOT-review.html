@@ -3,62 +3,284 @@
     <meta charset="UTF-8">
 <style>
     body{
-        font-family:
-        padding: px;
+        font-family: 'Pretendard5', sans-serif;
+        padding: 40px;
     }
 
-    /* HOT 리뷰 창 여는 박스 */
+    /* 팝업 여는 박스 */
+    /* 링크 눌렀을 때 생기는 글씨 색 변화, 밑줄 제거 */
+    a.hot-review-item {
+    color: inherit;
+    text-decoration: none;            
+    }
    
-   /* HOT 리뷰 창 */
-   dialog{
-    width: ;
-    max-width: ;
-    padding: ;
-    border: ;
-    border-radius: ;
-    box-shadow: ;
-   }
+    /* 팝업 전체 */
+    .popup{
+      position: fixed;
+      display: flex;
+      align-items: center; /* 세로 가운데 정렬 */
+      justify-content: center; /* 가로 가운데 정렬 */
+      visibility: hidden; /* 팝업 평소엔 숨김 */
+      opacity: 0;
+      transition: opacity 0.25s, visibility 0.25s; /* 열 때, 닫을 대 0.25초 동안 서서히 바뀜 */
+    }
 
-   /*창 뒤 어두운 배경*/
-   dialog::backdrop{
-    background: ;
-   }
+    .popup:has(:target){
+      visibility: visible;
+      opacity: 1;
+    }
 
-   /*상단 제목 + 닫기 버튼 영역*/
-   .popup-header{
-    display: ;
-    justify-content: ;
-    align-items: center;
-    padding: px px;
-    border-bottom: ;
-   }
-   .popup-header h2 {
-     margin: 0;
-     font-size: 18px;
-   }
+    /* 팝업이 열려 있는 동안 뒤쪽 페이지 스크롤 막기 */
+    body:has(.popup-review:target) {
+        overflow: hidden;
+    } 
 
-   .close-btn {
-     background: none;
-     border: none;
-     font-size: px;
-     line-height: 1;
-     cursor: pointer;
-     color: ;
-   }
+    /* 어두운 배경 */
+    .popup-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(30, 25, 25, 0.45);
+    }
 
-   .close-btn:hover {
-     color: ;
-   }
+    /* HOT 리뷰 창 */
+    .popup-box {
+        position: relative; /* 어두운 배경보다 위에 */
+        width: 90%;
+        max-width: 720px;
+        border-radius: 4px;               
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+    }
 
-   /* 스크롤되는 내용 영역 */
-   .popup-body {
-     max-height: px;   /* 이 높이를 넘으면 스크롤바가 생김 */
-     overflow-y: auto;
-     padding: px;
-     line-height: ;
-   }   
+    /*상단 제목 + 닫기 버튼 영역*/
+    .popup-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 32px 12px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .popup-header h2 {
+        margin: 0;
+        font-size: 22px;
+    }
+    .popup-header .point-color {
+        color: var(--primary-color);
+    }
+
+    .close-btn {
+        font-size: 28px;
+        line-height: 1;
+        text-decoration: none;
+        color: var(--subtext-color);
+    }
+
+    .close-btn:hover {
+        color: var(--primary-color);
+    }
+
+    /* 스크롤되는 내용 영역 */
+    .popup-body {
+        max-height: 65vh; /* 이 높이를 넘으면 스크롤바가 생김 */
+        overflow-y: auto;
+        padding: 0 32px;
+        line-height: 1.6;
+    }
+
+    /* 스크롤바 */
+    .popup-body::-webkit-scrollbar { width: 8px; }
+    .popup-body::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 4px;
+    }
+
+    /* 리뷰 하나 */
+    .popup-review {
+      padding: 24px 0 28px;
+    }
+    /* 리뷰 사이에 회색 선 */
+    .popup-review + .popup-review {
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* 포스터 + 한줄평/아이디/별점 */
+    .popup-review .review-header {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+    .popup-review .thumbnail { /* 포스터 이미지 */
+      width: 100px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      align-self: flex-start;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .popup-review .review {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .popup-review .category { /* 작품명 */
+      font-size: 0.9em;
+      color: var(--subtext-color);
+    }
+    .popup-review .rmain { /* 한줄평 */
+      margin: 0;
+      font-size: 1.3em;
+      color: var(--primary-color);
+    }
+    .popup-review .ruser { /* 아이디 */
+      margin: auto 0 0;
+    }
+    .popup-review .rating { /* 별점 */
+      margin: 0;
+      font-size: 0.9em;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+    .popup-review .rcontent { /* 리뷰 본문 */
+      margin: 0;
+      line-height: 1.75;
+    }
+    .popup-review .rdate { /* 작성 날짜 */
+      margin: 12px 0 0;
+      font-size: 0.85em;
+      color: var(--subtext-color);
+    }    
 </style>
 </head>
 <body>
-    <button class="" id=""></button>   
+    <a></a>
+    <a></a>
+    <a></a>
+
+    <div class="popup-box">
+      <div class="popup-header">
+        <h2>지금 <span class="point-color">HOT</span>한 리뷰</h2>
+        <a href="#close" class="close-btn" aria-label="닫기">x</a>
+      </div>
+
+      <div class="popup-body">
+                <article class="popup-review" id="">
+                    <div class="review-header">
+                        <img src="Thumbmail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                        <div class="review">
+                            <span class="category">뮤지컬 · 미드나잇</span>
+                            <h3 class="rmain">끝나고 한참 자리에서 못 일어났다</h3>
+                            <p class="ruser">abc*****</p>
+                            <p class="rating">★★★☆☆ (3.0)</p>
+                        </div>
+                    </div>
+                    <p class="rcontent">오랜만에 고지터를 봐서 굉장히 좋았습니다. 이전 시즌에서 약간의 변화가 있었으나 앤틀러스 보다 액터뮤지션을 훨씬 더 좋아하는 나로서는 솔직히 제작사에 대해 많이 아쉬운 마음입니다. 인지도 높은 배우들로 구성된 캐스팅은 둘째치고, 공연장 크기가 너무 차이나게 비교되어 오히려 앤틀러스 무대가 심심해 보이네요.ㅠㅠ
+
+저는 10년 전, 아직 미드나잇이 그냥 미드나잇만 존재하던 시절의 초연을 보고 이 공연의 팬이 됐어요. 오랜만에 돌아온 앤틀러스는 정말 최고였어요! 특히 배우님들 연기가, 초연부터 이어져서 그런지 공연 첫날이 아닌 것처럼 파워풀하고 단단해서 무척 좋았습니다!
+한 가지 아쉬운 점은 앤틀러스의 연출에 액터뮤지션이 조금 섞인 게 보인다는 거예요. 저는 둘은 별개의 공연이라고 생각하고, 앤틀러스가 말하고자 하는 미드나잇을 더 좋아하기 때문에 둘을 섞지 않으면 좋겠어요.
+
+앤틀러스는 대한민국이 독재자 경험/탄핵 경험이 있는 만큼 한국인의 공감을 더 자아낸다고 느끼고, 특히 고문 관련된 걸 소품으로 대체했다는 점에서 역사 반영과 실제 독재자에 대해 저항하신 분들을 배려했다는 부분이 좋았고요.
+
+솔직히 액터뮤지션이 영국? 라이센스 원조? 라는데 영국은 자기들이 독재자였지 독재자 경험도 없어가지고, 독재자 얘기를 액자밖에서 관람하는 느낌인데
+
+앤틀러스는 우리는 다 알지. 우리도 이 시대에서 양심 때문에 괴로움을 느껴봤어. 광화문에 한 번이라도 나간 적 있나? 이런 메시지를 줘서 좋았거든요
+(특.히. 앤틀러스 초연은 탄핵이 한창일때 공연했으니 아주 감동의 극치...)
+
+미드나잇 번역도 대박이라서 늘 가사가 입에 착붙어서 좋고요
+제 안의 미드나잇 원조는 앤틀러스라고 생각해요. 한국에 걸맞게 로컬라이징을 잘 한 거죠
+
+사실 요새 한국이 문화적 위상이 높아져서 해외에서 케데헌을 만드는데, 저희가 영국 뮤지컬을 한국식으로 좀 재해석 했는데 액터뮤지션이 앤틀러스보다 길고 자주해서 속상하구요..
+
+아무튼 앤틀러스야 말로 진정한 미드나잇이라고 생각해요. 비지터는 우리가 모두 겪어본 그 시절., 탄압의 시절에서 공포와 자책을 느낀 것이 형상화 된 거고
+우먼과 맨은 평범한 우리들이라고 생각하면 공감이 깊어요
+
+맨도 결국은 영웅은 아니었지만 죄책감에서 자유롭지 못했고, 우먼만 죄책감과 함께 끝나는 그런 이야기라 생각하면 감동이 몰려옵니다
+
+결론:앤틀러스랑 액터뮤랑 섞지 말아주세요ㅠ.</p>
+                    <p class="rdate">2026.10.12</p>
+                </article>
+
+                <article class="popup-review" id="">
+                    <div class="review-header">
+                        <img src="Thumbmail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                        <div class="review">
+                            <span class="category">뮤지컬 · 미드나잇</span>
+                            <h3 class="rmain">끝나고 한참 자리에서 못 일어났다</h3>
+                            <p class="ruser">abc*****</p>
+                            <p class="rating">★★★☆☆ (3.0)</p>
+                        </div>
+                    </div>
+                    <p class="rcontent">오랜만에 고지터를 봐서 굉장히 좋았습니다. 이전 시즌에서 약간의 변화가 있었으나 앤틀러스 보다 액터뮤지션을 훨씬 더 좋아하는 나로서는 솔직히 제작사에 대해 많이 아쉬운 마음입니다. 인지도 높은 배우들로 구성된 캐스팅은 둘째치고, 공연장 크기가 너무 차이나게 비교되어 오히려 앤틀러스 무대가 심심해 보이네요.ㅠㅠ
+
+저는 10년 전, 아직 미드나잇이 그냥 미드나잇만 존재하던 시절의 초연을 보고 이 공연의 팬이 됐어요. 오랜만에 돌아온 앤틀러스는 정말 최고였어요! 특히 배우님들 연기가, 초연부터 이어져서 그런지 공연 첫날이 아닌 것처럼 파워풀하고 단단해서 무척 좋았습니다!
+한 가지 아쉬운 점은 앤틀러스의 연출에 액터뮤지션이 조금 섞인 게 보인다는 거예요. 저는 둘은 별개의 공연이라고 생각하고, 앤틀러스가 말하고자 하는 미드나잇을 더 좋아하기 때문에 둘을 섞지 않으면 좋겠어요.
+
+앤틀러스는 대한민국이 독재자 경험/탄핵 경험이 있는 만큼 한국인의 공감을 더 자아낸다고 느끼고, 특히 고문 관련된 걸 소품으로 대체했다는 점에서 역사 반영과 실제 독재자에 대해 저항하신 분들을 배려했다는 부분이 좋았고요.
+
+솔직히 액터뮤지션이 영국? 라이센스 원조? 라는데 영국은 자기들이 독재자였지 독재자 경험도 없어가지고, 독재자 얘기를 액자밖에서 관람하는 느낌인데
+
+앤틀러스는 우리는 다 알지. 우리도 이 시대에서 양심 때문에 괴로움을 느껴봤어. 광화문에 한 번이라도 나간 적 있나? 이런 메시지를 줘서 좋았거든요
+(특.히. 앤틀러스 초연은 탄핵이 한창일때 공연했으니 아주 감동의 극치...)
+
+미드나잇 번역도 대박이라서 늘 가사가 입에 착붙어서 좋고요
+제 안의 미드나잇 원조는 앤틀러스라고 생각해요. 한국에 걸맞게 로컬라이징을 잘 한 거죠
+
+사실 요새 한국이 문화적 위상이 높아져서 해외에서 케데헌을 만드는데, 저희가 영국 뮤지컬을 한국식으로 좀 재해석 했는데 액터뮤지션이 앤틀러스보다 길고 자주해서 속상하구요..
+
+아무튼 앤틀러스야 말로 진정한 미드나잇이라고 생각해요. 비지터는 우리가 모두 겪어본 그 시절., 탄압의 시절에서 공포와 자책을 느낀 것이 형상화 된 거고
+우먼과 맨은 평범한 우리들이라고 생각하면 공감이 깊어요
+
+맨도 결국은 영웅은 아니었지만 죄책감에서 자유롭지 못했고, 우먼만 죄책감과 함께 끝나는 그런 이야기라 생각하면 감동이 몰려옵니다
+
+결론:앤틀러스랑 액터뮤랑 섞지 말아주세요ㅠ.</p>
+                    <p class="rdate">2026.10.12</p>
+                </article>
+
+                <article class="popup-review" id="">
+                    <div class="review-header">
+                        <img src="Thumbmail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                        <div class="review">
+                            <span class="category">뮤지컬 · 미드나잇</span>
+                            <h3 class="rmain">끝나고 한참 자리에서 못 일어났다</h3>
+                            <p class="ruser">abc*****</p>
+                            <p class="rating">★★★☆☆ (3.0)</p>
+                        </div>
+                    </div>
+                    <p class="rcontent">오랜만에 고지터를 봐서 굉장히 좋았습니다. 이전 시즌에서 약간의 변화가 있었으나 앤틀러스 보다 액터뮤지션을 훨씬 더 좋아하는 나로서는 솔직히 제작사에 대해 많이 아쉬운 마음입니다. 인지도 높은 배우들로 구성된 캐스팅은 둘째치고, 공연장 크기가 너무 차이나게 비교되어 오히려 앤틀러스 무대가 심심해 보이네요.ㅠㅠ
+
+저는 10년 전, 아직 미드나잇이 그냥 미드나잇만 존재하던 시절의 초연을 보고 이 공연의 팬이 됐어요. 오랜만에 돌아온 앤틀러스는 정말 최고였어요! 특히 배우님들 연기가, 초연부터 이어져서 그런지 공연 첫날이 아닌 것처럼 파워풀하고 단단해서 무척 좋았습니다!
+한 가지 아쉬운 점은 앤틀러스의 연출에 액터뮤지션이 조금 섞인 게 보인다는 거예요. 저는 둘은 별개의 공연이라고 생각하고, 앤틀러스가 말하고자 하는 미드나잇을 더 좋아하기 때문에 둘을 섞지 않으면 좋겠어요.
+
+앤틀러스는 대한민국이 독재자 경험/탄핵 경험이 있는 만큼 한국인의 공감을 더 자아낸다고 느끼고, 특히 고문 관련된 걸 소품으로 대체했다는 점에서 역사 반영과 실제 독재자에 대해 저항하신 분들을 배려했다는 부분이 좋았고요.
+
+솔직히 액터뮤지션이 영국? 라이센스 원조? 라는데 영국은 자기들이 독재자였지 독재자 경험도 없어가지고, 독재자 얘기를 액자밖에서 관람하는 느낌인데
+
+앤틀러스는 우리는 다 알지. 우리도 이 시대에서 양심 때문에 괴로움을 느껴봤어. 광화문에 한 번이라도 나간 적 있나? 이런 메시지를 줘서 좋았거든요
+(특.히. 앤틀러스 초연은 탄핵이 한창일때 공연했으니 아주 감동의 극치...)
+
+미드나잇 번역도 대박이라서 늘 가사가 입에 착붙어서 좋고요
+제 안의 미드나잇 원조는 앤틀러스라고 생각해요. 한국에 걸맞게 로컬라이징을 잘 한 거죠
+
+사실 요새 한국이 문화적 위상이 높아져서 해외에서 케데헌을 만드는데, 저희가 영국 뮤지컬을 한국식으로 좀 재해석 했는데 액터뮤지션이 앤틀러스보다 길고 자주해서 속상하구요..
+
+아무튼 앤틀러스야 말로 진정한 미드나잇이라고 생각해요. 비지터는 우리가 모두 겪어본 그 시절., 탄압의 시절에서 공포와 자책을 느낀 것이 형상화 된 거고
+우먼과 맨은 평범한 우리들이라고 생각하면 공감이 깊어요
+
+맨도 결국은 영웅은 아니었지만 죄책감에서 자유롭지 못했고, 우먼만 죄책감과 함께 끝나는 그런 이야기라 생각하면 감동이 몰려옵니다
+
+결론:앤틀러스랑 액터뮤랑 섞지 말아주세요ㅠ.</p>
+                    <p class="rdate">2026.10.12</p>
+                </article>
+
+            </div>       
+      </div>
+    </div>
 </body>
+<footer>
+    <div class="footer-logo">
+        <img src="res/logo_1.png" alt="로고" class="logo">
+    </div>
+    <p>푸터텍스트~~</p>
+</footer>
+</html>

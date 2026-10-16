@@ -1,0 +1,90 @@
+/* 폼 전체 */
+.write-form {
+  max-width: 820px;
+  margin: 0 auto 100px;
+  border-top: 2px solid #111;
+}
+.form-row {
+  display: grid; /*격자배치: 왼쪽 항목명과 오른쪽 입력칸의 시작위치 같도록*/
+  grid-template-columns: 140px 1fr; /* 왼쪽 140px, 남은 공간(1fr) 전부 오른쪽*/
+  align-items: start;
+  gap: 20px;
+  padding: 22px 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.form-row > label,
+.row-label {
+  font-weight: 700;
+  font-size: 16px;
+  padding-top: 10px;
+}
+.field { display: flex; flex-direction: column; gap: 8px; }
+
+/* 입력칸 공통 */
+.write-form select, /* 작품 선택 */
+.write-form input[type="text"], /* 한줄평 */
+.write-form input[type="date"], /* 관람일 달력 */
+.write-form textarea { /* 리뷰 내용 */
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.write-form input[type="date"] { width: 220px; }
+.write-form textarea { resize: vertical; line-height: 1.6; }
+.write-form select:focus,
+.write-form input:focus,
+.write-form textarea:focus {
+  border-color: var(--primary-color);
+}
+
+/* 별 버튼 배치 */
+.star-rating {
+  display: inline-flex; /* inline: 필요한 폭만 차지 */
+  flex-direction: row-reverse; /* 5→1 순서를 1→5로 보이게 뒤집기 */
+  justify-content: flex-end;
+}
+
+/* 라디오 동그라미 숨기기 */
+.star-rating input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 별 버튼 생김새 */
+.star-rating label {
+  font-size: 36px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.15s; /* 색 바뀔 때 부드럽게 */
+}
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label { /* 마우스 올린 별 뒤에 있는 모든 label */
+  color: var(--primary-color);
+}
+
+/* 취소, 등록하기 버튼 */
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.btn-cancel,
+.btn-submit {
+  width: 160px;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-cancel { border: 1px solid #111; background: #fff; color: #111; }
+.btn-submit { border: none; background: var(--primary-color); color: #fff; }
+.btn-submit:hover { opacity: 0.9; }
