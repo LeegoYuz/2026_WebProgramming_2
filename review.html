@@ -4,30 +4,185 @@
     <meta charset="utf-8">
     <meta name="author" content="이세나">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="review.css">
 </head>
 <body>
     <header></header> /* 메인페이지 코드 넣는데 class를 홈에서 리뷰로 옮기기 */
-    <main class="container">
-        <section class="page-title">
-            <h2>관객 리뷰</h2>
-            <p>먼저 관람한 관객들의 생생한 후기를 확인해 보세요.</p>
-        </section>
-        <div class="toolbar">
-            <div class="tabs">
-                <button class="active">전체</button>
-                <button>뮤지컬</button>
-                <button>연극</button>
+    <main class="main-wrapper">
+        <div class="review-title">
+            <h2>관객 <span class="point-color">리뷰</span></h2>
+            <p class="review-intro">먼저 관람한 관객들의 생생한 후기를 확인해 보세요.</p>
+        </div>
+        <input type="radio" name="category" id="category-all" class="filter-radio" checked>
+        <input type="radio" name="category" id="category-musical" class="filter-radio">
+        <input type="radio" name="category" id="category-play" class="filter-radio">
+        <input type="radio" name="category" id="category-photo" class="filter-radio">
+        <div class="filter-bar">
+            <div class="category-tabs">
+                <label for="category-all">전체</label>
+                <label for="category-musical">뮤지컬</label>
+                <label for="category-play">연극</label>
+                <label for="category-photo">사진 리뷰</label>
             </div>
-            <div class="toolbar-right">
-                <select>
-                    <option>최신순</option>
-                    <option>별점 높은순</option>
-                    <option>별점 낮은순</option>
-                    <option>좋아요순</option>
+            <div class="filter-right">
+                <select id="sort-select" class="sort-select" aria-label="정렬">
+                    <option value="new" selected>최신순</option>
+                    <option value="high">별점 높은순</option>
+                    <option value="low">별점 낮은순</option>
+                    <option value="like">좋아요순</option>
                 </select>
-                <a href="review-write.html" class="write">리뷰 작성</a>
+                <a href="review-write.html" class="write-btn">리뷰 작성</a>
             </div>
         </div>
+
+        <section class="review-list">
+            
+            <article class="review-item musical photo" style="--date: 20261016; --star: 30; --like: 128;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 미드나잇 : 액터뮤지션 <span class="hot-badge">HOT</span></p>
+                        <p class="meta"><span class="rating">★★★☆☆ 3.0</span> · nig***** · 2026.10.16</p>
+                    </div>
+                </div>
+                <img src="res/미드나잇 리뷰 사진.png" alt="미드나잇 캐스팅보드 사진" class="review-photo">
+                <p class="rcontent">오랜만에 고지터를 봐서 굉장히 좋았습니다. 이전 시즌에서 약간의 변화가 있었으나 앤틀러스보다 액터뮤지션을 훨씬 더 좋아하는 나로서는 솔직히 제작사에 대해 많이 아쉬운 마음입니다. 인지도 높은 배우들로 구성된 캐스팅은 둘째치고, 공연장 크기가 너무 차이나게 비교되어 오히려 앤틀러스 무대가 심심해 보이네요. 저는 10년 전, 아직 미드나잇이 그냥 미드나잇만 존재하던 시절의 초연을 보고 이 공연의 팬이 됐어요.</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">128</b><b class="count-on">129</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261015; --star: 40; --like: 3;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 미드나잇 : 액터뮤지션</p>
+                        <p class="meta"><span class="rating">★★★★☆ 4.0</span> · mid***** · 2026.10.15</p>
+                    </div>
+                </div>
+                <p class="rcontent">재밌게 잘 봤습니다</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">3</b><b class="count-on">4</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261014; --star: 50; --like: 42;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_SweeneyTodd.png" alt="스위니토드 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 스위니토드 &lt;10주년&gt;</p>
+                        <p class="meta"><span class="rating">★★★★★ 5.0</span> · abc***** · 2026.10.14</p>
+                    </div>
+                </div>
+                <p class="rcontent">잔인한걸 싫어하는 분들은 거부감이 들 수 있으니 조심하시고, 신선한 충격?을 느끼고 싶으신 분들은 한번쯤 봐도 좋을 작품이라고 생각합니다!</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">42</b><b class="count-on">43</b></label>
+            </article>
+
+            <article class="review-item play" style="--date: 20261013; --star: 50; --like: 35;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_ProjectRwanda.png" alt="프로젝트 르완다 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">연극 · 프로젝트 르완다</p>
+                        <p class="meta"><span class="rating">★★★★★ 5.0</span> · rwa***** · 2026.10.13</p>
+                    </div>
+                </div>
+                <p class="rcontent">과거의 아픔을 잊지 않고, 현재를 살아가는 데 필요한 교훈을 얻을 수 있습니다. 많은 분들이 이 연극을 통해 깊은 감동과 생각할 거리를 얻으시길 바랍니다</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">35</b><b class="count-on">36</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261012; --star: 20; --like: 56;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 미드나잇 : 액터뮤지션</p>
+                        <p class="meta"><span class="rating">★★☆☆☆ 2.0</span> · sea***** · 2026.10.12</p>
+                    </div>
+                </div>
+                <p class="rcontent">3열 자리는 인간적으로 시야방해석 값 받아야 하는거 아닌가 싶다. 3열 중블 살짝 왼쪽쪽 앉았는데 쇼파왼쪽자리 1도 안보임. 비지터가 쇼파 한가운데에 앉으면 안보임. 쇼파 오른쪽은 겨우보임. 음향도 앞자리는 잘 안들림. 차라리 뒷자리로 스피커 음향이 잘 가던데. 극장 되게 희한함.</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">56</b><b class="count-on">57</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261011; --star: 50; --like: 18;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_SweeneyTodd.png" alt="스위니토드 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 스위니토드 &lt;10주년&gt;</p>
+                        <p class="meta"><span class="rating">★★★★★ 5.0</span> · swe***** · 2026.10.11</p>
+                    </div>
+                </div>
+                <p class="rcontent">너무 재밌어요.... 이렇게 재밌는 걸 왜 이제야 봤지</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">18</b><b class="count-on">19</b></label>
+            </article>
+
+            <article class="review-item play" style="--date: 20261009; --star: 40; --like: 7;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_ProjectRwanda.png" alt="프로젝트 르완다 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">연극 · 프로젝트 르완다</p>
+                        <p class="meta"><span class="rating">★★★★☆ 4.0</span> · the***** · 2026.10.09</p>
+                    </div>
+                </div>
+                <p class="rcontent">재밌어요 오랜만에 봐서 더 재밋었던 갓 같아요</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">7</b><b class="count-on">8</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261008; --star: 45; --like: 11;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_SweeneyTodd.png" alt="스위니토드 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 스위니토드 &lt;10주년&gt;</p>
+                        <p class="meta"><span class="rating">★★★★☆ 4.0</span> · tod***** · 2026.10.08</p>
+                    </div>
+                </div>
+                <p class="rcontent">잔인한걸 싫어하는 분들은 거부감이 들 수 있으니 조심하시고, 신선한 충격?을 느끼고 싶으신 분들은 한번쯤 봐도 좋을 작품이라고 생각합니다!</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">11</b><b class="count-on">12</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261007; --star: 50; --like: 2;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 미드나잇 : 액터뮤지션</p>
+                        <p class="meta"><span class="rating">★★★★★ 5.0</span> · kno***** · 2026.10.07</p>
+                    </div>
+                </div>
+                <p class="rcontent">재밌게 잘 봤습니다</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">2</b><b class="count-on">3</b></label>
+            </article>
+
+            <article class="review-item play" style="--date: 20261006; --star: 45; --like: 9;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_ProjectRwanda.png" alt="프로젝트 르완다 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">연극 · 프로젝트 르완다</p>
+                        <p class="meta"><span class="rating">★★★★☆ 4.0</span> · his***** · 2026.10.06</p>
+                    </div>
+                </div>
+                <p class="rcontent">과거의 아픔을 잊지 않고, 현재를 살아가는 데 필요한 교훈을 얻을 수 있습니다. 많은 분들이 이 연극을 통해 깊은 감동과 생각할 거리를 얻으시길 바랍니다</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">9</b><b class="count-on">10</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261005; --star: 40; --like: 5;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_SweeneyTodd.png" alt="스위니토드 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 스위니토드 &lt;10주년&gt;</p>
+                        <p class="meta"><span class="rating">★★★★☆ 4.0</span> · pie***** · 2026.10.05</p>
+                    </div>
+                </div>
+                <p class="rcontent">너무 재밌어요.... 이렇게 재밌는 걸 왜 이제야 봤지</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">5</b><b class="count-on">6</b></label>
+            </article>
+
+            <article class="review-item musical" style="--date: 20261004; --star: 25; --like: 21;">
+                <div class="review-header">
+                    <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                    <div>
+                        <p class="category">뮤지컬 · 미드나잇 : 액터뮤지션</p>
+                        <p class="meta"><span class="rating">★★☆☆☆ 2.0</span> · vis***** · 2026.10.04</p>
+                    </div>
+                </div>
+                <p class="rcontent">3열 자리는 인간적으로 시야방해석 값 받아야 하는거 아닌가 싶다. 쇼파 왼쪽 자리가 하나도 안 보이고, 음향도 앞자리는 잘 안 들려요. 차라리 뒷자리를 추천합니다.</p>
+                <label class="like"><input type="checkbox"> ♥ 좋아요 <b class="count-off">21</b><b class="count-on">22</b></label>
+            </article>
+
+        </section>        
     </main>
 </body>
 <footer>

@@ -1,0 +1,228 @@
+/* 제목 */
+.review-title h2 {
+  margin-bottom: 6px;
+}
+.review-title .point-color {
+  color: var(--primary-color);
+}
+
+/* 안내 문구 */
+.review-intro {
+  margin: 0 0 28px;
+  font-size: 0.9em;
+  color: var(--subtext-color);
+}
+
+/* 리뷰 작성 버튼 */
+.write-btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+}
+.write-btn:hover {
+  opacity: 0.85;
+}
+
+/* 기존 라디오 버튼 숨기기 */
+.filter-radio {
+  display: none;
+}
+
+/* tabs와 sorts가 있는 줄 전체 */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--text-color);
+}
+
+/* 왼쪽: 카테고리 탭 */
+.category-tabs {
+  display: flex;
+  gap: 8px;
+}
+.category-tabs label {
+  padding: 8px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background-color: #fff;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.category-tabs label:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+body:has(#category-all:checked)     label[for="category-all"],
+body:has(#category-musical:checked) label[for="category-musical"],
+body:has(#category-play:checked)    label[for="category-play"],
+body:has(#category-photo:checked)   label[for="category-photo"] {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 오른쪽: 정렬 + 리뷰 작성 */
+.filter-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: inherit;              
+  font-size: 0.9em;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.sort-select:focus { /* 클릭 했을 때 */
+  outline: none;
+  border-color: var(--primary-color); 
+}
+.write-btn {
+  padding: 9px 18px;
+  border-radius: 4px;
+  background-color: var(--text-color); 
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.write-btn:hover {
+  background-color: var(--primary-color);
+}
+
+/* 선택한 탭에 해당하지 않는 리뷰 숨기기 */
+body:has(#category-musical:checked) .review-item:not(.musical),
+body:has(#category-play:checked)    .review-item:not(.play),
+body:has(#category-photo:checked)   .review-item:not(.photo) {
+  display: none;
+}
+
+/* option을 가진 main-wrapper 안의 리뷰
+   clalc(): CSS안에서 계산 해주는 함수
+   -1: 순서를 뒤집기 위해 곱하는 것
+   flex의 order는 오름차순으로 정렬 -> 낮은 별점순은 변화 x */
+.main-wrapper:has(#sort-select option[value="new"]:checked)  .review-item { order: calc(var(--date) * -1); }
+.main-wrapper:has(#sort-select option[value="high"]:checked) .review-item { order: calc(var(--star) * -1); }
+.main-wrapper:has(#sort-select option[value="low"]:checked)  .review-item { order: var(--star); }
+.main-wrapper:has(#sort-select option[value="like"]:checked) .review-item { order: calc(var(--like) * -1); }
+
+/* 정렬: flex의 order 값으로 화면 순서 바꾸기 */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+}
+
+/* 리뷰 하나 (리뷰 사이 회색 선) */
+.review-item {
+  padding: 26px 32px 22px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* 작품 포스터 + 작품명/별점/아이디/날짜 */
+.review-item .review-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.review-item .thumbnail {
+  width: 52px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.review-item .category {
+  margin: 0;
+  font-size: 0.9em;
+  color: var(--subtext-color);
+}
+.review-item .meta {
+  margin: 2px 0 0;
+  font-size: 0.9em;
+  color: var(--subtext-color);
+}
+.review-item .rating {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* HOT 배지 */
+.hot-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 8px;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.8em;
+  line-height: 1.6;
+}
+
+/* 리뷰 사진 (본문 위, 가운데) */
+.review-item .review-photo {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin: 0 auto 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 리뷰 본문 */
+.review-item .rcontent {
+  margin: 0;
+  line-height: 1.75;
+  color: var(--text-color);
+}
+
+/* 좋아요 */
+.like {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+  padding: 5px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background-color: #fff;
+  font-size: 0.85em;
+  color: var(--subtext-color);
+  cursor: pointer;
+  user-select: none;
+}
+.like:hover {
+  border-color: var(--primary-color);
+}
+.like input {
+  display: none; /* 기존 체크박스 숨김 */
+}
+.like .count-on {
+  display: none; /* 평소엔 원래 숫자 */
+}
+/* 눌렀을 때 */
+.like:has(input:checked) {
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.like:has(input:checked) .count-off { display: none; }
+.like:has(input:checked) .count-on  { display: inline; }
+
+/* 화면이 좁을 때 */
+@media (max-width: 800px) {
+  .filter-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .review-item { padding: 22px 18px 18px; }
+}
