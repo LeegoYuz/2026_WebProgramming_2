@@ -8,41 +8,51 @@
 
     <header>
         <div class="header-inner">
-            <div class="header-logo">
-                <img src="res/logo_1.png" alt="로고" class="logo">
-            </div>
+            <div class="header-left">
+                <div class="header-logo">
+                    <img src="res/logo_1.png" alt="로고" class="logo">
+                </div>
 
-            <div class="header-nav">
-                <nav>
-                    <ul>
-                        홈
-                        작품
-                        리뷰
-                    </ul>
-                </nav>
+                <div class="header-nav">
+                    <nav>
+                        <ul>
+                            <a href="index.html">홈</a>
+                            <a class="current-page" href="product-list.html">작품</a>
+                            <a href="review.html">리뷰</a>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-
-            <div class="header-search">
-                <form class="header-right">
-                    <input type="search" name="search" placeholder="작품 검색">
-                    <button class="search-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                        </svg>
-                    </button>
-                </form>
+            
+            <div class="header-right">
+                <div class="header-search">
+                    <form>
+                        <input type="search" name="search" placeholder="작품 검색">
+                        <button class="search-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                <div class="header-others">
+                    <button>로그인</button>
+                    <button>회원가입</button>
+                </div>
             </div>
-            <p>고객센터</p>
-            <p>로그인/회원가입</p>
         </div>
     </header>
     
     <body>
     <div class="main-wrapper">
         <section class="title-upper">
-            <h2>연극</h2>
-            <div>
-                <button>필터링</button>
+            <h2>작품 목록</h2>
+            <div class="filter-bar">
+                <div class="category-tabs">
+                    <label for="category-all">전체</label>
+                    <label for="category-musical">뮤지컬</label>
+                    <label for="category-play">연극</label>
+                </div>
             </div>
         </section>
         
@@ -59,12 +69,32 @@
             </div>
 
             <div class="product-item">
-                <img src="res/thumbnail_Midnight.png" alt="포스터" class="thumbnail">
+                <img src="res/thumbnail_PhantomOfOpera.png" alt="포스터" class="thumbnail">
                 <div class="info">
                     <span class="category">뮤지컬</span>
-                    <h3 class="title">미드나잇 : 액터뮤지션 &lt;THE CHOICE&gt;</h3>
+                    <h3 class="title">&lt;오페라의 유령&gt; 40주년 스페셜 시즌</h3>
+                    <p class="price">₩70,000~</p>
+                    <p class="rating">★★★★★ (4.9)</p>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="res/thumbnail_ProjectRwanda.png" alt="포스터" class="thumbnail">
+                <div class="info">
+                    <span class="category">연극</span>
+                    <h3 class="title">프로젝트 르완다</h3>
+                    <p class="price">₩25,000~</p>
+                    <p class="rating">★★★★★ (5.0)</p>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="res/thumbnail_SweeneyTodd.png" alt="포스터" class="thumbnail">
+                <div class="info">
+                    <span class="category">뮤지컬</span>
+                    <h3 class="title">&lt;스위니토드&gt; 10주년</h3>
                     <p class="price">₩41,900~</p>
-                    <p class="rating">★★★★☆ (4.2)</p>
+                    <p class="rating">★★★★☆ (4.4)</p>
                 </div>
             </div>
 
@@ -147,35 +177,18 @@
                     <p class="rating">★★★★☆ (4.2)</p>
                 </div>
             </div>
-
-            <div class="product-item">
-                <img src="res/thumbnail_Midnight.png" alt="포스터" class="thumbnail">
-                <div class="info">
-                    <span class="category">뮤지컬</span>
-                    <h3 class="title">미드나잇 : 액터뮤지션 &lt;THE CHOICE&gt;</h3>
-                    <p class="price">₩41,900~</p>
-                    <p class="rating">★★★★☆ (4.2)</p>
-                </div>
-            </div>
-
-            <div class="product-item">
-                <img src="res/thumbnail_Midnight.png" alt="포스터" class="thumbnail">
-                <div class="info">
-                    <span class="category">뮤지컬</span>
-                    <h3 class="title">미드나잇 : 액터뮤지션 &lt;THE CHOICE&gt;</h3>
-                    <p class="price">₩41,900~</p>
-                    <p class="rating">★★★★☆ (4.2)</p>
-                </div>
-            </div>
-            <p>페이지 넘기는거 넣기?</p>
         </section>
     </div>
     </body>
 
     <footer>
         <div class="footer-logo">
-            <img src="res/logo_1.png" alt="로고" class="logo">
+            <img src="res/logo_3.png" alt="로고" class="logo">
         </div>
-        <p>푸터텍스트~~</p>
+        <p>(주)베리티켓 | 대표 홍길동 | 사업자등록번호 123-45-67890</p>
+        <p>서비스 이용약관 | 개인정보 처리방침 | 회사 정보</p>
+        <p>고객센터 전화번호 1111-1111</p>
+        <p>© 2026 BERRYTICKET. All rights reserved.</p>
+        <!-- 최상단 바로가기 버튼 연결... 지금 구현 가능한 사양인지? -->
     </footer>
 </html>

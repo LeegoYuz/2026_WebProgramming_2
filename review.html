@@ -7,7 +7,43 @@
     <link rel="stylesheet" href="review.css">
 </head>
 <body>
-    <header></header> /* 메인페이지 코드 넣는데 class를 홈에서 리뷰로 옮기기 */
+    <header>
+        <div class="header-inner">
+            <div class="header-left">
+                <div class="header-logo">
+                    <img src="res/logo_1.png" alt="로고" class="logo">
+                </div>
+
+                <div class="header-nav">
+                    <nav>
+                        <ul>
+                            <a href="index.html">홈</a>
+                            <a href="product-list.html">작품</a>
+                            <a class="current-page" href="review.html">리뷰</a>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-search">
+                    <form>
+                        <input type="search" name="search" placeholder="작품 검색">
+                        <button class="search-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                <div class="header-others">
+                    <button>로그인</button>
+                    <button>회원가입</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <main class="main-wrapper">
         <div class="review-title">
             <h2>관객 <span class="point-color">리뷰</span></h2>
@@ -185,10 +221,15 @@
         </section>        
     </main>
 </body>
-<footer>
-    <div class="footer-logo">
-        <img src="res/logo_1.png" alt="로고" class="logo">
-    </div>
-    <p>푸터텍스트~~</p>
-</footer>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="res/logo_3.png" alt="로고" class="logo">
+        </div>
+        <p>(주)베리티켓 | 대표 홍길동 | 사업자등록번호 123-45-67890</p>
+        <p>서비스 이용약관 | 개인정보 처리방침 | 회사 정보</p>
+        <p>고객센터 전화번호 1111-1111</p>
+        <p>© 2026 BERRYTICKET. All rights reserved.</p>
+        <!-- 최상단 바로가기 버튼 연결... 지금 구현 가능한 사양인지? -->
+    </footer>
 </html>
