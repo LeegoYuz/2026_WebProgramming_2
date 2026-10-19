@@ -328,8 +328,7 @@ p {
                 overflow-x: hidden;
             }
 
-            .section-divider:after {
-                content: "";
+            .section-divider .line {
                 width: 240px;
                 height: 1px;
                 background-color: var(--primary-color);
