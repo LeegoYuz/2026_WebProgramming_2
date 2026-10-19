@@ -1,6 +1,6 @@
 /* 제목 */
 .review-title h2 {
-  margin-bottom: 6px;
+  margin-bottom: 16px;
 }
 .review-title .point-color {
   color: var(--primary-color);

@@ -141,6 +141,9 @@ header img.logo {
   background-color: var(--secondary-color);
   border-radius: 5px;
 }
+.header-search input:focus {
+  outline: none;
+}
 .header-search .search-button {
   position: absolute;
   left: 2px;
@@ -171,6 +174,7 @@ header img.logo {
   transition: all 0.3s ease;
 }
 .header-others button:hover {
+  cursor: pointer;
   font-weight: bold;
   color: var(--primary-color);
 }
@@ -328,7 +332,7 @@ p {
             .hot-review-item {
                 flex: 0 0 calc((100% - 2 * 30px) / 3);
                 box-sizing: border-box;
-                border: 1px solid #ddd;
+                border: 1px solid var(--border-color);
                 /* border-radius: 4px; */
                 overflow: hidden;         /* 이미지 넘침 방지 */
                 background-color: var(--secondary-color);
@@ -403,7 +407,7 @@ p {
   padding: 6px 14px;
   border: 1px solid var(--border-color);
   border-radius: 20px;
-  background-color: #fff;
+  background-color: var(--background-color);
   color: var(--text-color);
   cursor: pointer;
 }
@@ -425,11 +429,12 @@ p {
 .product-item { /* 개별 아이템 박스 */
   flex: 0 0 calc((100% - 3 * 30px) / 4);
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   overflow: hidden;         /* 이미지 넘침 방지 */
-  background-color: #fff;
+  background-color: var(--background-color);
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
 .product-item .thumbnail { /* 썸네일 이미지 */
@@ -468,5 +473,6 @@ p {
 }
 
 .product-item:hover {
+  transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
