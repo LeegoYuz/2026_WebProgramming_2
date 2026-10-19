@@ -3,183 +3,19 @@
     <meta charset="UTF-8">
     <meta name="author" content="이세나">
     <link rel="stylesheet" href="style.css">
-<style>
-    body{
-        font-family: 'Pretendard5', sans-serif;
-        padding: 40px;
-    }
-
-    /* 팝업 여는 박스 */
-    /* 링크 눌렀을 때 생기는 글씨 색 변화, 밑줄 제거 */
-    a.hot-review-item {
-    color: inherit;
-    text-decoration: none;            
-    }
-   
-    /* 팝업 전체 */
-    .popup{
-      position: fixed;
-      display: flex;
-      align-items: center; /* 세로 가운데 정렬 */
-      justify-content: center; /* 가로 가운데 정렬 */
-      visibility: hidden; /* 팝업 평소엔 숨김 */
-      opacity: 0;
-      transition: opacity 0.25s, visibility 0.25s; /* 열 때, 닫을 대 0.25초 동안 서서히 바뀜 */
-    }
-
-    .popup:has(:target){
-      visibility: visible;
-      opacity: 1;
-    }
-
-    /* 팝업이 열려 있는 동안 뒤쪽 페이지 스크롤 막기 */
-    body:has(.popup-review:target) {
-        overflow: hidden;
-    } 
-
-    /* 어두운 배경 */
-    .popup-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(30, 25, 25, 0.45);
-    }
-
-    /* HOT 리뷰 창 */
-    .popup-box {
-        position: relative; /* 어두운 배경보다 위에 */
-        width: 90%;
-        max-width: 720px;
-        border-radius: 4px;               
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        background-color: var(--secondary-color);
-        color: var(--text-color);
-    }
-
-    /*상단 제목 + 닫기 버튼 영역*/
-    .popup-header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 24px 32px 12px;
-        border-bottom: 1px solid var(--border-color);
-    }
-    .popup-header h2 {
-        margin: 0;
-        font-size: 22px;
-    }
-    .popup-header .point-color {
-        color: var(--primary-color);
-    }
-
-    .close-btn {
-        font-size: 28px;
-        line-height: 1;
-        text-decoration: none;
-        color: var(--subtext-color);
-    }
-
-    .close-btn:hover {
-        color: var(--primary-color);
-    }
-
-    /* 스크롤되는 내용 영역 */
-    .popup-body {
-        max-height: 65vh; /* 이 높이를 넘으면 스크롤바가 생김 */
-        overflow-y: auto;
-        padding: 0 32px;
-        line-height: 1.6;
-    }
-
-    /* 스크롤바 */
-    .popup-body::-webkit-scrollbar { width: 8px; }
-    .popup-body::-webkit-scrollbar-thumb {
-        background-color: var(--primary-color);
-        border-radius: 4px;
-    }
-
-    /* 리뷰 하나 */
-    .popup-review {
-      padding: 24px 0 28px;
-    }
-    /* 리뷰 사이에 회색 선 */
-    .popup-review + .popup-review {
-      border-top: 1px solid var(--border-color);
-    }
-
-    /* 포스터 + 한줄평/아이디/별점 */
-    .popup-review .review-header {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 16px;
-    }
-    .popup-review .thumbnail { /* 포스터 이미지 */
-      width: 100px;
-      height: auto;
-      object-fit: cover;
-      flex-shrink: 0;
-      align-self: flex-start;
-      border-radius: 4px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-    .popup-review .review {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .popup-review .category { /* 작품명 */
-      font-size: 0.9em;
-      color: var(--subtext-color);
-    }
-    .popup-review .rmain { /* 한줄평 */
-      margin: 0;
-      font-size: 1.3em;
-      color: var(--primary-color);
-    }
-    .popup-review .ruser { /* 아이디 */
-      margin: auto 0 0;
-    }
-    .popup-review .rating { /* 별점 */
-      margin: 0;
-      font-size: 0.9em;
-      font-weight: bold;
-      color: var(--primary-color);
-    }
-    .popup-review .review-photo{ /* 리뷰 사진 */
-      display: block; /* 한 줄 통째로 차지 */
-      width: 100%; /* 좁은 화면에서 칸에 맞게 줄어듦 */
-      max-width: 480px;
-      aspect-ratio: 4 / 3; /* 가로:세로 비율 고정*/
-      object-fit: cover; /* 비율이 다르면 찌그러지지 않고 잘라서 채움 */
-      margin: 0 auto 16px;
-      border-radius: 4px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-    .popup-review .rcontent { /* 리뷰 본문 */
-      margin: 0;
-      line-height: 1.75;
-    }
-    .popup-review .rdate { /* 작성 날짜 */
-      margin: 12px 0 0;
-      font-size: 0.85em;
-      color: var(--subtext-color);
-    }    
-</style>
 </head>
 <body id="top">
-    <a></a>
-    <a></a>
-    <a></a>
-
+    <div class="popup">
+    <a href="#close" class="popup-backdrop" aria-label="닫기"></a>
     <div class="popup-box">
         <div class="popup-header">
-        <h2>지금 <span class="point-color">HOT</span>한 리뷰</h2>
-        <a href="#close" class="close-btn" aria-label="닫기">x</a>
+            <h2>지금 <span class="point-color">HOT</span>한 리뷰</h2>
+            <a href="#close" class="close-btn" aria-label="닫기">x</a>
         </div>
-
         <div class="popup-body">
-                <article class="popup-review" id="">
+                <article class="popup-review" id="hot1">
                     <div class="review-header">
-                        <img src="res/Thumbmail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                        <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
                         <div class="review">
                             <span class="category">뮤지컬 · 미드나잇</span>
                             <h3 class="rmain">끝나고 한참 자리에서 못 일어났다</h3>
@@ -204,10 +40,9 @@
                     </p>
                     <p class="rdate">2026.10.12</p>
                 </article>
-
-                <article class="popup-review" id="">
+                <article class="popup-review" id="hot2">
                     <div class="review-header">
-                        <img src="res/Thumbmail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                        <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
                         <div class="review">
                             <span class="category">뮤지컬 · 미드나잇</span>
                             <h3 class="rmain">끝나고 한참 자리에서 못 일어났다</h3>
@@ -232,10 +67,9 @@
                     </p>
                     <p class="rdate">2026.10.12</p>
                 </article>
-
-                <article class="popup-review" id="">
+                <article class="popup-review" id="hot3">
                     <div class="review-header">
-                        <img src="res/Thumbmail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
+                        <img src="res/Thumbnail_Midnight.png" alt="미드나잇 포스터" class="thumbnail">
                         <div class="review">
                             <span class="category">뮤지컬 · 미드나잇</span>
                             <h3 class="rmain">끝나고 한참 자리에서 못 일어났다</h3>
@@ -260,8 +94,8 @@
                     </p>
                     <p class="rdate">2026.10.12</p>
                 </article>
-
-            </div>       
+            </div>
+            <a href="review.html" class="more-bar">관객 리뷰 전체 보기 ›</a>       
         </div>
     </div>
 </body>
