@@ -293,8 +293,8 @@ p {
                 max-width: 100%;
                 height: auto;
                 display: block;
-                object-fit: cover;     /* 이미지가 깨지지 않고 비율을 유지하며 가득 채움 */
-                object-position: 70% 50%; /* 이미지의 중앙을 기준으로 정렬 */
+                object-fit: cover;     /* 이미지 비율 유지 */
+                object-position: 70% 50%; /* 이미지 중앙 정렬 */
             }
 
             h2 .point-color {
@@ -306,17 +306,16 @@ p {
             }
 
             .banner-text {
-                position: absolute; /* 💡 사진 위로 글자 박스를 붕 띄웁니다 */
-                top: 62%;           /* 위에서부터 50% 위치에 배치 */
-                left: 280px;          /* 왼쪽에서부터 10% 여백 생성 */
-                transform: translateY(-50%); /* 정확하게 세로 중앙 정렬을 맞추는 공식 */
+                position: absolute; /* 사진 위로 글자 */
+                top: 62%;
+                left: 280px;
                 line-height: 1.0;
-                color: var(--background-color);       /* 사진 위에서 잘 보이도록 글자색을 흰색으로 설정 */
-                z-index: 2;         /* 글자가 사진보다 무조건 위에 보이도록 층수 높이기 */
+                color: var(--background-color);
+                z-index: 2; /* 사진 위로 글자 */
             }
 
             .banner-text p.white-color {
-                color: var(--background-color) !important;
+                color: var(--background-color);
             }
 
             .section-divider {
@@ -357,7 +356,6 @@ p {
                 flex: 0 0 calc((100% - 2 * 30px) / 3);
                 box-sizing: border-box;
                 border: 1px solid var(--border-color);
-                /* border-radius: 4px; */
                 overflow: hidden;         /* 이미지 넘침 방지 */
                 background-color: var(--secondary-color);
                 box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -369,7 +367,6 @@ p {
                 width: 20%;
                 height: auto;
                 object-fit: cover;
-                /* border-radius: 4px; */
                 flex-shrink: 0;
             }
 
@@ -498,5 +495,5 @@ p {
 
 .product-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
