@@ -11,7 +11,9 @@
         <div class="header-inner">
             <div class="header-left">
                 <div class="header-logo">
-                    <img src="res/logo_1.png" alt="로고" class="logo">
+                    <a href="index.html">
+                        <img src="res/logo_1.png" alt="로고" class="logo">
+                    </a>
                 </div>
 
                 <div class="header-nav">
@@ -45,7 +47,6 @@
     </header>
 
     <body>
-        <!-- 메인 이미지: 왼쪽 패딩 374 해서 총 크기 1920-240*2=1440 맞출 것-->
         <div class="main-banner">
             <img src="res/Image_main2.png" alt="메인이미지" class="thumbnail">
 
@@ -57,14 +58,14 @@
         </div>
 
         <div class="main-wrapper">
-            <h2> 지금 인기 <span class="point-color">TOP</span> </h2>
+            <nav><h2><a class="h2-style" href="product-lIst.html"> 지금 인기 <span class="point-color"> TOP </span></a></h2></nav>
             <section class="product-list">
                 <div class="product-item">
                     <img src="res/Thumbnail_SweeneyTodd.png" alt="포스터" class="thumbnail">
                     <div class="info">
                         <span class="category">뮤지컬</span>
                         <h3 class="title"> 스위니토드 &lt;10주년&gt;</h3>
-                        <p class="rating">★★★★★ (5.0)</p>
+                        <p class="rating">★★★★☆ (4.4)</p>
                     </div>
                 </div>
 
@@ -73,7 +74,7 @@
                     <div class="info">
                         <span class="category">뮤지컬</span>
                         <h3 class="title"> 오페라의 유령 &lt;40주년 스페셜 시즌&gt; </h3>
-                        <p class="rating">★★★★★ (5.0)</p>
+                        <p class="rating">★★★★★ (4.9)</p>
                     </div>
                 </div>
 
@@ -91,7 +92,7 @@
                     <div class="info">
                         <span class="category">뮤지컬</span>
                         <h3 class="title"> 미드나잇 : 액터뮤지션 &lt;THE CHOICE&gt; </h3>
-                        <p class="rating">★★★★★ (5.0)</p>
+                        <p class="rating">★★★★☆ (4.2)</p>
                     </div>
                 </div>
             </section>
@@ -102,7 +103,7 @@
         </div>
 
         <div class="main-wrapper">
-            <h2> 지금 <span class="point-color">HOT</span>한 리뷰 </h2>
+            <nav> <h2> <a class="h2-style" href="review.html"> 지금 <span class="point-color">HOT</span>한 리뷰 </a> </h2> </nav>
             <section class="hot-review-list">
                 <div class="hot-review-item">
                 <div class="review-header">
@@ -170,12 +171,9 @@
 - 카드 전체 움직임으로 하이퍼링크
 - 최상단 로고 누르면 홈 새로고침
 - 최하단 화살표 누르면 최상단으로
-- 메인 이미지 누르면 오페라의 유령 하이퍼링크
 - "지금 인기 TOP" 누르면 연극/뮤지컬 페이지로 이동
 - "지금 HOT한 리뷰" 누르면 리뷰 페이지로 이동
 
 rating class에 align-items: flex-end; 속성 넣어서 별점 바닥줄에 맞추기
-
-최하단 푸터: 메타페이지
 
 -->
