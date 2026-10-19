@@ -100,35 +100,34 @@ body { /* 기본 페이지 서식 */
 /* 헤더 & 푸터 (공용) */
 /* ----------------------------------------------------- */
 
-header { /* 헤더 */
-  padding: 0 0;
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 2px 4px -3px rgba(0,0,0,0.2);
-  margin-bottom: 40px;
-}
+  header { /* 헤더 */
+    padding: 0 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px -3px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+  }
 
-.header-inner {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 240px; /* 채영님 시안처럼 좀 가운데에 모을 거라면 가로패딩 추가 */
-}
+  .header-inner {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 240px; /* 채영님 시안처럼 좀 가운데에 모을 거라면 가로패딩 추가 */
+  }
 
-.header-left {
-  display: flex;
-}
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
 
-.header-right {
-  display: flex;
-  gap: 0;
-}
+  .header-right {
+    display: flex;
+    gap: 0;
+  }
 
-header img.logo {
-    background: url("res/logo_1.png") no-repeat center;
-    background-size: contain;
-    height: 45px;
-}
+  header img.logo {
+      height: 42px;
+  }
 
 .header-search {
   position: relative;
