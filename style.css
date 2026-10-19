@@ -356,10 +356,18 @@ p {
                 flex: 0 0 calc((100% - 2 * 30px) / 3);
                 box-sizing: border-box;
                 border: 1px solid var(--border-color);
+                border-radius: 4px;
                 overflow: hidden;         /* 이미지 넘침 방지 */
                 background-color: var(--secondary-color);
                 box-shadow: 0 2px 6px rgba(0,0,0,0.2);
                 padding: 12px;
+                transition: all 0.3s ease;
+            }
+
+            .hot-review-item:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                /* box-shadow: 0 8px 16px rgba(201, 44, 71, 0.3); */
             }
 
             /* 썸네일 이미지 */
