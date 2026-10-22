@@ -93,7 +93,7 @@ body { /* 기본 페이지 서식 */
 }
 
 .main-wrapper {
-  padding: 0 240px; /* 페이지 가로 여백 */
+  padding: 0 200px; /* 페이지 가로 여백 */
 }
 
 
@@ -104,7 +104,7 @@ body { /* 기본 페이지 서식 */
     padding: 0 0;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 4px -3px rgba(0,0,0,0.2);
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .header-inner {
@@ -112,7 +112,7 @@ body { /* 기본 페이지 서식 */
     flex-shrink: 0;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 240px; /* 채영님 시안처럼 좀 가운데에 모을 거라면 가로패딩 추가 */
+    padding: 16px 200px; /* 채영님 시안처럼 좀 가운데에 모을 거라면 가로패딩 추가 */
   }
 
   .header-left {
@@ -126,14 +126,14 @@ body { /* 기본 페이지 서식 */
   }
 
   header img.logo {
-      height: 42px;
+      height: 32px;
   }
 
 .header-search {
   position: relative;
-  width: 200px;
+  width: 400px;
   height: 45px;
-  margin-right: 50px;
+  margin-right: 0px;
 }
 .header-search input {
   padding: 15px 32px;
@@ -180,9 +180,12 @@ body { /* 기본 페이지 서식 */
   color: var(--primary-color);
 }
 
+.header-nav {
+  padding: 4px 144px;
+}
 
 nav a {
-  margin: 0 15px;
+  margin: 0 16px;
   text-decoration: none;
   color: var(--subtext-color);
   transition: all 0.3s ease;
@@ -469,13 +472,12 @@ p {
   aspect-ratio: 210 / 297;
   border-radius: 2px;
   display: block;
-  margin: 15px auto 5px auto;
+  margin: 16px auto 8px auto;
   object-fit: cover;        /* 이미지 잘라내기 */
 }
 
-
 .product-item .info { /* 각 아이템 설명 */
-  padding: 0 15px;
+  padding: 0 16px;
 }
 .product-item .category {
   font-size: 0.9em;
